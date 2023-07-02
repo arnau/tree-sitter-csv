@@ -4,14 +4,13 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat($.record),
     record: $ => seq(
-      $._field,
+      optional($._field),
       repeat($._pair),
       $._eor,
-      // optional($._eor),
     ),
     _eor: $ => choice('\n', '\r\n'),
-    _pair: $ => prec.right(1, seq(
-      field('deli', $.delimiter),
+    _pair: $ => prec(1, seq(
+      field('sep', $.delimiter),
       optional($._field),
     )),
     delimiter: $ => ',',
@@ -36,14 +35,13 @@ module.exports = grammar({
     float: $ => /(0|[1-9]\d*)\.\d+/,
     string: $ => choice(
       seq($.quote, $.quote),
-      seq($.quote, $.quoted_content, $.quote),
-      $.unquoted_content,
+      seq($.quote, $.escaped, $.quote),
+      $.non_escaped,
     ),
     quote: $ => '"',
-    quoted_content: $ => 
+    escaped: $ => 
       repeat1(prec.left(1, choice($.escape_sequence, $.text))),
-    unquoted_content: $ => $._non_escaped,
-    _non_escaped: $ => /[^\\"\r\n\t,]+/,
+    non_escaped: $ => /[^\\"\r\n\t,]+/,
     text: $ => /[^\\"\r\n]+/,
     escape_sequence: $ => token.immediate(prec(10, choice(
       '""',

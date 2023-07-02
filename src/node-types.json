@@ -1,6 +1,6 @@
 [
   {
-    "type": "quoted_content",
+    "type": "escaped",
     "named": true,
     "fields": {},
     "children": {
@@ -22,7 +22,7 @@
     "type": "record",
     "named": true,
     "fields": {
-      "deli": {
+      "sep": {
         "multiple": true,
         "required": false,
         "types": [
@@ -35,7 +35,7 @@
     },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "boolean",
@@ -92,24 +92,19 @@
       "required": true,
       "types": [
         {
+          "type": "escaped",
+          "named": true
+        },
+        {
+          "type": "non_escaped",
+          "named": true
+        },
+        {
           "type": "quote",
-          "named": true
-        },
-        {
-          "type": "quoted_content",
-          "named": true
-        },
-        {
-          "type": "unquoted_content",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "unquoted_content",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "\n",
@@ -145,6 +140,10 @@
   },
   {
     "type": "na",
+    "named": true
+  },
+  {
+    "type": "non_escaped",
     "named": true
   },
   {

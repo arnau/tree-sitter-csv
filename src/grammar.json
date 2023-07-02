@@ -12,8 +12,16 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_field"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_field"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "REPEAT",
@@ -42,14 +50,14 @@
       ]
     },
     "_pair": {
-      "type": "PREC_RIGHT",
+      "type": "PREC",
       "value": 1,
       "content": {
         "type": "SEQ",
         "members": [
           {
             "type": "FIELD",
-            "name": "deli",
+            "name": "sep",
             "content": {
               "type": "SYMBOL",
               "name": "delimiter"
@@ -165,7 +173,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "quoted_content"
+              "name": "escaped"
             },
             {
               "type": "SYMBOL",
@@ -175,7 +183,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "unquoted_content"
+          "name": "non_escaped"
         }
       ]
     },
@@ -183,7 +191,7 @@
       "type": "STRING",
       "value": "\""
     },
-    "quoted_content": {
+    "escaped": {
       "type": "REPEAT1",
       "content": {
         "type": "PREC_LEFT",
@@ -203,11 +211,7 @@
         }
       }
     },
-    "unquoted_content": {
-      "type": "SYMBOL",
-      "name": "_non_escaped"
-    },
-    "_non_escaped": {
+    "non_escaped": {
       "type": "PATTERN",
       "value": "[^\\\\\"\\r\\n\\t,]+"
     },
