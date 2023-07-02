@@ -1,0 +1,32 @@
+{
+  "name": "tree-sitter-csv",
+  "version": "0.1.0",
+  "description": "CSV grammar for tree-sitter",
+  "main": "bindings/node",
+  "keywords": [
+    "parser",
+    "tree-sitter",
+    "csv"
+  ],
+  "author": "Arnau Siches",
+  "license": "MIT",
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
+  },
+  "dependencies": {
+    "nan": "^2.17.0",
+    "node-gyp": "^9.4.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.csv",
+      "file-types": [
+        "csv"
+      ]
+    }
+  ]
+}
