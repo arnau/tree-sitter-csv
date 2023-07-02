@@ -133,7 +133,7 @@ bar,qux
 ================================================================================
 Quoted string literals with escape sequences
 ================================================================================
-"The bat\twith a hat is a ""cat"" with a hat."
+"abc ""ooo"" xyz"
 
 --------------------------------------------------------------------------------
 
@@ -146,6 +146,5 @@ Quoted string literals with escape sequences
         (escape_sequence)
         (text)
         (escape_sequence)
-        (text)
-        (escape_sequence)
-        (text)))))
+        (text))
+      (quote))))

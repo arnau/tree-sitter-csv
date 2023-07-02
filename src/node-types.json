@@ -4,7 +4,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -107,11 +107,16 @@
     }
   },
   {
+    "type": "unquoted_content",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\n",
     "named": false
   },
   {
-    "type": "\r",
+    "type": "\r\n",
     "named": false
   },
   {
@@ -152,10 +157,6 @@
   },
   {
     "type": "text",
-    "named": true
-  },
-  {
-    "type": "unquoted_content",
     "named": true
   }
 ]

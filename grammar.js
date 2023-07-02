@@ -6,9 +6,10 @@ module.exports = grammar({
     record: $ => seq(
       $._field,
       repeat($._pair),
-      optional($._eor),
+      $._eor,
+      // optional($._eor),
     ),
-    _eor: $ => choice('\n', '\r'),
+    _eor: $ => choice('\n', '\r\n'),
     _pair: $ => prec.right(1, seq(
       field('deli', $.delimiter),
       optional($._field),
@@ -22,35 +23,32 @@ module.exports = grammar({
       $.string,
     ),
 
-    null: $ => token.immediate(prec(1, /null|NULL/)),
-    na: $ => token.immediate(prec(1, /na|NA/)),
-    boolean: $ => token.immediate(prec(1, /true|TRUE|false|FALSE/)),
+    null: $ => /null|NULL/,
+    na: $ => /na|NA/,
+    boolean: $ => /true|TRUE|false|FALSE/,
     _number: $ => choice(
       $.hex,
       $.float,
       $.integer,
     ),
-    integer: $ => token.immediate(prec(1, /\d+/)),
-    hex: $ => token.immediate(prec(1,
-      /0[xX][\da-fA-F]+/
-    )),
-    float: $ => token.immediate(prec(1, /(0|[1-9])[0-9]*\.[0-9]+/)),
+    integer: $ => /\d+/,
+    hex: $ => /0[xX][\da-fA-F]+/,
+    float: $ => /(0|[1-9]\d*)\.\d+/,
     string: $ => choice(
       seq($.quote, $.quote),
       seq($.quote, $.quoted_content, $.quote),
       $.unquoted_content,
     ),
     quote: $ => '"',
-    quoted_content: $ => choice(
-      $.text,
-      $.escape_sequence,
-    ),
-    unquoted_content: $ =>
-      token.immediate(prec(1, /[^\\"\n,]+/)),
-    text: $ => /[^\\"\n]+/,
-    escape_sequence: $ => token(prec(10, choice(
+    quoted_content: $ => 
+      repeat1(prec.left(1, choice($.escape_sequence, $.text))),
+    unquoted_content: $ => $._non_escaped,
+    _non_escaped: $ => /[^\\"\r\n\t,]+/,
+    text: $ => /[^\\"\r\n]+/,
+    escape_sequence: $ => token.immediate(prec(10, choice(
       '""',
-      /\\[bfnrt]/,
+      '\n',
+      '\r\n',
     ))),
   }
 });
