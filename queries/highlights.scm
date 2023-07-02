@@ -1,9 +1,14 @@
 ; Literals
 (boolean) @constant.builtin.boolean
-(integer) @number
-(float) @number
-(hex) @number
-[(null) (na)] @constant.builtin
+[
+  (integer)
+  (float)
+  (hex)
+] @constant.numeric
+[
+  (null)
+  (na)
+] @constant.builtin
 (string) @string
 
 (escape_sequence) @constant.character.escape

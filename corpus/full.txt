@@ -1,0 +1,100 @@
+================================================================================
+Full example
+================================================================================
+id,name,is_active,value
+1,"float",true,42.0
+2,date,false,NA
+3,"text",true,"Lorem ipsum ""dolor"" sit amet."
+4,"integer",true,10
+5,"hex",true,0xAF
+6,"",,NULL
+
+-------------------------------------------------------------------------------
+
+(source_file
+  (record
+    (string
+      (non_escaped))
+    (delimiter)
+    (string
+      (non_escaped))
+    (delimiter)
+    (string
+      (non_escaped))
+    (delimiter)
+    (string
+      (non_escaped)))
+  (record
+    (integer)
+    (delimiter)
+    (string
+      (quote)
+      (escaped
+        (text))
+      (quote))
+    (delimiter)
+    (boolean)
+    (delimiter)
+    (float))
+  (record
+    (integer)
+    (delimiter)
+    (string
+      (non_escaped))
+    (delimiter)
+    (boolean)
+    (delimiter)
+    (na))
+  (record
+    (integer)
+    (delimiter)
+    (string
+      (quote)
+      (escaped
+        (text))
+      (quote))
+    (delimiter)
+    (boolean)
+    (delimiter)
+    (string
+      (quote)
+      (escaped
+        (text)
+        (escape_sequence)
+        (text)
+        (escape_sequence)
+        (text))
+      (quote)))
+  (record
+    (integer)
+    (delimiter)
+    (string
+      (quote)
+      (escaped
+        (text))
+      (quote))
+    (delimiter)
+    (boolean)
+    (delimiter)
+    (integer))
+  (record
+    (integer)
+    (delimiter)
+    (string
+      (quote)
+      (escaped
+        (text))
+      (quote))
+    (delimiter)
+    (boolean)
+    (delimiter)
+    (hex))
+  (record
+    (integer)
+    (delimiter)
+    (string
+      (quote)
+      (quote))
+    (delimiter)
+    (delimiter)
+    (null)))
