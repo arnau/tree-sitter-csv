@@ -3,16 +3,13 @@
   "version": "0.1.0",
   "description": "CSV grammar for tree-sitter",
   "main": "bindings/node",
-  "keywords": [
-    "parser",
-    "tree-sitter",
-    "csv"
-  ],
+  "keywords": ["parser", "tree-sitter", "csv"],
   "author": "Arnau Siches",
   "license": "MIT",
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
-    "test": "tree-sitter test"
+    "test": "tree-sitter test",
+    "dev": "npm run build && tree-sitter highlight --html examples/*.csv > target/out.html && open target/out.html"
   },
   "dependencies": {
     "nan": "^2.17.0",
@@ -24,9 +21,7 @@
   "tree-sitter": [
     {
       "scope": "source.csv",
-      "file-types": [
-        "csv"
-      ]
+      "file-types": ["csv"]
     }
   ]
 }
