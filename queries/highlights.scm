@@ -9,10 +9,10 @@
   (null)
   (na)
 ] @constant.builtin
-(string) @string
+
+((string) @string (#match? @string "^\".+?\""))
 
 (escape_sequence) @constant.character.escape
 
 ; Punctuation
 (delimiter) @punctuation.delimiter
-(quote) @punctuation.bracket
