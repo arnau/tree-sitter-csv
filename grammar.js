@@ -25,13 +25,11 @@ module.exports = grammar({
     null: $ => /null|NULL/,
     na: $ => /na|NA/,
     boolean: $ => /true|TRUE|false|FALSE/,
-    _number: $ => seq(
-      optional("-"), 
-      choice(
-        $.hex,
-        $.float,
-        $.integer,
-    )),
+    _number: $ => choice(
+      $.hex,
+      $.float,
+      $.integer,
+    ),
     integer: $ => /-?\d+/,
     hex: $ => /0[xX][\da-fA-F]+/,
     float: $ => /-?(0|[1-9]\d*)\.\d+/,
