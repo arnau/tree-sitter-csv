@@ -19,5 +19,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: latest
+      - run: python3 -m pip install setuptools
       - run: npm install
       - run: npm test
