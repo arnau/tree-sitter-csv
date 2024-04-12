@@ -34,7 +34,7 @@ module.exports = grammar({
     )),
     integer: $ => /-?\d+/,
     hex: $ => /0[xX][\da-fA-F]+/,
-    float: $ => /[\-]?(0|[1-9]\d*)\.\d+/,
+    float: $ => /-?(0|[1-9]\d*)\.\d+/,
     string: $ => choice(
       seq($.quote, $.quote),
       seq($.quote, $.escaped, $.quote),
