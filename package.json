@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
     "test": "tree-sitter test",
-    "dev": "npm run build && tree-sitter highlight --html examples/*.csv > target/out.html && open target/out.html"
+    "dev": "npm run build && tree-sitter highlight examples/*.csv"
   },
   "dependencies": {
     "nan": "^2.17.0",
