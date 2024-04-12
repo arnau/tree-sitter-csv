@@ -115,10 +115,6 @@
     "named": false
   },
   {
-    "type": "-",
-    "named": false
-  },
-  {
     "type": "boolean",
     "named": true
   },

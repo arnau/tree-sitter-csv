@@ -6,6 +6,7 @@ id,name,is_active,value
 2,date,false,NA
 3,"text",true,"Lorem ipsum ""dolor"" sit amet."
 4,"integer",true,10
+4,"negative integer",true,-10
 5,"hex",true,0xAF
 6,"",,NULL
 
@@ -65,6 +66,18 @@ id,name,is_active,value
         (escape_sequence)
         (text))
       (quote)))
+  (record
+    (integer)
+    (delimiter)
+    (string
+      (quote)
+      (escaped
+        (text))
+      (quote))
+    (delimiter)
+    (boolean)
+    (delimiter)
+    (integer))
   (record
     (integer)
     (delimiter)
