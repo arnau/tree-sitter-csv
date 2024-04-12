@@ -155,7 +155,7 @@
     },
     "integer": {
       "type": "PATTERN",
-      "value": "[\\-]?\\d+"
+      "value": "-?\\d+"
     },
     "hex": {
       "type": "PATTERN",
@@ -163,7 +163,7 @@
     },
     "float": {
       "type": "PATTERN",
-      "value": "[\\-]?(0|[1-9]\\d*)\\.\\d+"
+      "value": "-?(0|[1-9]\\d*)\\.\\d+"
     },
     "string": {
       "type": "CHOICE",
