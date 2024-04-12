@@ -120,25 +120,42 @@
       "value": "true|TRUE|false|FALSE"
     },
     "_number": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "hex"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "float"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "integer"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "hex"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "float"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "integer"
+            }
+          ]
         }
       ]
     },
     "integer": {
       "type": "PATTERN",
-      "value": "\\d+"
+      "value": "-?\\d+"
     },
     "hex": {
       "type": "PATTERN",
@@ -146,7 +163,7 @@
     },
     "float": {
       "type": "PATTERN",
-      "value": "(0|[1-9]\\d*)\\.\\d+"
+      "value": "-?(0|[1-9]\\d*)\\.\\d+"
     },
     "string": {
       "type": "CHOICE",
