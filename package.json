@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-csv",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "CSV grammar for tree-sitter",
   "main": "bindings/node",
   "keywords": [
