@@ -32,7 +32,7 @@ module.exports = grammar({
         $.float,
         $.integer,
     )),
-    integer: $ => /[\-]?\d+/,
+    integer: $ => /-?\d+/,
     hex: $ => /0[xX][\da-fA-F]+/,
     float: $ => /[\-]?(0|[1-9]\d*)\.\d+/,
     string: $ => choice(
