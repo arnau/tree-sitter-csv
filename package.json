@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "description": "CSV grammar for tree-sitter",
   "main": "bindings/node",
-  "keywords": ["parser", "tree-sitter", "csv"],
+  "keywords": [
+    "parser",
+    "tree-sitter",
+    "csv"
+  ],
   "author": "Arnau Siches",
   "license": "MIT",
   "scripts": {
@@ -21,7 +25,10 @@
   "tree-sitter": [
     {
       "scope": "source.csv",
-      "file-types": ["csv"]
+      "highlights": "queries/highlights.scm",
+      "file-types": [
+        "csv"
+      ]
     }
   ]
 }
