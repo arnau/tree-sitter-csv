@@ -15,6 +15,7 @@ module.exports = grammar({
     )),
     delimiter: $ => ',',
     _field: $ => choice(
+      $.empty,
       $.null,
       $.na,
       $.boolean,
@@ -22,6 +23,10 @@ module.exports = grammar({
       $.string,
     ),
 
+    empty: $ => choice(
+      '',  // Empty unquoted field
+      seq($.quote, $.quote)  // Empty quoted field
+    ),
     null: $ => /null|NULL/,
     na: $ => /na|NA/,
     boolean: $ => /true|TRUE|false|FALSE/,
@@ -34,15 +39,14 @@ module.exports = grammar({
     hex: $ => /0[xX][\da-fA-F]+/,
     float: $ => /-?(0|[1-9]\d*)\.\d+/,
     string: $ => choice(
-      seq($.quote, $.quote),
       seq($.quote, $.escaped, $.quote),
       $.non_escaped,
     ),
     quote: $ => '"',
     escaped: $ => 
       repeat1(prec.left(1, choice($.escape_sequence, $.text))),
-    non_escaped: $ => /[^\\"\r\n\t,]+/,
-    text: $ => /[^\\"\r\n]+/,
+    non_escaped: $ => /[^,"\r\n][^,\r\n]*/,  // At least one non-special char
+    text: $ => /[^"\r\n]+/,
     escape_sequence: $ => token.immediate(prec(10, choice(
       '""',
       '\n',
