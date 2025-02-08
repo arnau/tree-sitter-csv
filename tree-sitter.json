@@ -1,0 +1,38 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "csv",
+      "camelcase": "csv",
+      "scope": "source.csv",
+      "file-types": [
+        "csv"
+      ],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "^csv$",
+      "class-name": "TreeSitterCsv"
+    }
+  ],
+  "metadata": {
+    "version": "0.3.0",
+    "license": "MIT",
+    "description": "CSV grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Arnau Siches"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/arnau/tree-sitter-csv"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
